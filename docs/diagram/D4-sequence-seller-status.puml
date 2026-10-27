@@ -1,0 +1,51 @@
+@startuml
+title D4.2 - Penjual Memproses Pesanan dan Memperbarui Status
+autonumber
+hide footbox
+
+actor "Penjual Kantin" as P
+boundary "Antarmuka CLI" as UI
+control "Modul Pemenuhan dan Pelacakan Pesanan" as Pemenuhan
+database "Data Pesanan\n(pesanan_masuk)" as DataPesanan
+
+P -> UI: Pilih "Lihat Pesanan Masuk"
+UI -> Pemenuhan: ambil_daftar_pesanan()
+Pemenuhan -> DataPesanan: Baca daftar pesanan
+DataPesanan --> Pemenuhan: Daftar pesanan
+Pemenuhan --> UI: Daftar pesanan
+UI --> P: Tampilkan pesanan masuk
+
+P -> UI: Masukkan ID pesanan dan status baru
+UI -> Pemenuhan: perbarui_status(ID, status_baru)
+Pemenuhan -> DataPesanan: Cari pesanan berdasarkan ID
+DataPesanan --> Pemenuhan: Data pesanan atau tidak ditemukan
+
+alt ID pesanan tidak ditemukan
+    Pemenuhan --> UI: Gagal, ID tidak ditemukan
+    UI --> P: Tampilkan pesan kesalahan
+else ID pesanan ditemukan
+    Pemenuhan -> DataPesanan: Baca metode penerimaan dan status saat ini
+    DataPesanan --> Pemenuhan: Metode penerimaan dan status saat ini
+    Pemenuhan -> Pemenuhan: Validasi status dan urutan transisi
+
+    alt Status tidak sesuai dengan alur pesanan
+        Pemenuhan --> UI: Gagal, status tidak sesuai
+        UI --> P: Tampilkan pesan validasi
+    else Status valid
+        Pemenuhan -> DataPesanan: Simpan status baru
+        DataPesanan --> Pemenuhan: Status berhasil disimpan
+        Pemenuhan --> UI: Pembaruan berhasil
+        UI --> P: Tampilkan status terbaru
+    end
+end
+
+note over Pemenuhan,DataPesanan
+Status rancangan:
+1. Menunggu Konfirmasi Penjual
+2. Sedang Disiapkan
+3. Siap Diambil, jika metode ambil sendiri
+   atau Sedang Diantar, jika metode pengantaran
+4. Selesai (Sudah Diterima)
+end note
+
+@enduml
