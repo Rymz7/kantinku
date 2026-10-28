@@ -8,8 +8,7 @@ def proses_pesanan(data_menu, id_menu, jumlah_diminta):
     
     if jumlah_diminta <= stok_tersedia:
         data_menu[id_menu]["stok"] -= jumlah_diminta
-        stok_terbaru = data_menu[id_menu]["stok"]
-        return True, f"Berhasil! Kamu memesan {jumlah_diminta} porsi {item['nama']}. Stok telah diperbarui (sisa: {stok_terbaru})."
+        return True, f"Berhasil! Kamu memesan {jumlah_diminta} porsi {item['nama']}."
     else:
         return False, f"Gagal: Stok {item['nama']} tidak cukup! Kamu minta {jumlah_diminta}, tapi sisa stok cuma {stok_tersedia}."
 
@@ -23,7 +22,6 @@ def test_pesanan_sukses():
     
     assert status is True
     assert menu_test[1]["stok"] == 13 # Memastikan stok berkurang jadi 13
-    assert "Stok telah diperbarui" in pesan # Memastikan teks info stok telah diperbarui ada di pesan
 
 def test_pesanan_gagal_karena_stok_kurang():
     menu_test = {3: {"nama": "Kopi Hitam", "stok": 5}}
