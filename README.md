@@ -51,5 +51,16 @@ Catatan kontribusi anggota kelompok serta tautan ke riwayat Pull Request.
 - [Pull Requests](https://github.com/Rymz7/kantinku/pulls)
 
 <!-- TAMBAHKAN BAGIAN D6 - TEST CASES DI SINI SETELAH FILE D6 SUDAH ADA. -->
-<!-- TAMBAHKAN BAGIAN D7 - UNIT TESTING DI SINI SETELAH FILE TEST DAN SCREENSHOT SUDAH ADA. -->
-<!-- SETELAH D7 SIAP, TAMBAHKAN JUGA CARA MENJALANKAN TESTS, CONTOH: python -m pytest -v. --> 
+### D7 - Unit-Tested Code (1 Function)
+
+Implementasi dan pengujian 1 fungsi menggunakan kerangka kerja `pytest`. Pengujian berfokus pada logika validasi dan pemotongan ketersediaan stok menu pesanan kantin, mencakup skenario berhasil dan gagal.
+
+- [Source Code Fungsi (`src/stock.py`)](src/stock.py)
+- [Source Code Unit Test (`src/test_stok.py`)](src/test_stok.py)
+- [Screenshot Hasil Pengujian (Passed)](src/IMG/hasil_test_stock.png)
+
+**Cara Menjalankan Test:**
+Pastikan module `pytest` sudah terinstal di lingkungan Python Anda. Buka terminal di direktori utama (root) proyek ini, lalu jalankan perintah berikut:
+
+```bash
+pytest src/test_stock.py -v
