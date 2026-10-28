@@ -1,0 +1,56 @@
+@startuml
+title D4.3 - Mahasiswa Melacak dan Menerima Pesanan
+autonumber
+hide footbox
+
+actor "Mahasiswa" as M
+actor "Penjual Kantin" as P
+boundary "Antarmuka CLI" as UI
+control "Modul Pemenuhan dan Pelacakan Pesanan" as Pemenuhan
+database "Data Pesanan\n(pesanan_masuk)" as DataPesanan
+
+M -> UI: Masukkan ID pesanan untuk dilacak
+UI -> Pemenuhan: lacak_status(ID)
+Pemenuhan -> DataPesanan: Cari pesanan berdasarkan ID
+DataPesanan --> Pemenuhan: Detail pesanan atau tidak ditemukan
+
+alt ID pesanan tidak ditemukan
+    Pemenuhan --> UI: ID tidak ditemukan
+    UI --> M: Tampilkan pesan kesalahan
+else Pesanan ditemukan
+    Pemenuhan --> UI: Status, metode penerimaan,\ndan lokasi pesanan
+    UI --> M: Tampilkan status pesanan
+
+    alt Ambil sendiri dan status "Siap Diambil"
+        M -> P: Datang ke kantin dan menunjukkan ID pesanan
+        P --> M: Serahkan makanan
+        P -> UI: Tandai pesanan selesai
+        UI -> Pemenuhan: perbarui_status(ID, "Selesai (Sudah Diterima)")
+        Pemenuhan -> DataPesanan: Simpan status selesai
+        DataPesanan --> Pemenuhan: Status tersimpan
+        Pemenuhan --> UI: Pembaruan berhasil
+        UI --> P: Pesanan selesai
+        UI --> M: Status pesanan diperbarui menjadi selesai
+
+    else Diantar ke kelas dan status "Sedang Diantar"
+        P -> M: Antar dan serahkan makanan di kelas
+        M --> P: Konfirmasi menerima pesanan
+        P -> UI: Tandai pesanan selesai
+        UI -> Pemenuhan: perbarui_status(ID, "Selesai (Sudah Diterima)")
+        Pemenuhan -> DataPesanan: Simpan status selesai
+        DataPesanan --> Pemenuhan: Status tersimpan
+        Pemenuhan --> UI: Pembaruan berhasil
+        UI --> P: Pesanan selesai
+        UI --> M: Status pesanan diperbarui menjadi selesai
+
+    else Pesanan belum siap atau belum selesai
+        UI --> M: Tampilkan status terkini dan instruksi menunggu
+    end
+end
+
+note over M,DataPesanan
+Alur pengambilan/pengantaran dan konfirmasi penerimaan
+merupakan rancangan yang perlu diselaraskan dengan implementasi.
+end note
+
+@enduml

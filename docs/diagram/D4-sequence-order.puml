@@ -1,0 +1,98 @@
+@startuml
+title D4.1 - Mahasiswa Membuat Pesanan
+autonumber
+hide footbox
+
+actor "Mahasiswa" as M
+boundary "Antarmuka CLI" as UI
+control "Modul Katalog Menu" as Katalog
+control "Modul Pemesanan dan Perhitungan Harga" as Pemesanan
+control "Modul Pengelolaan Stok" as Stok
+participant "Simulasi Pembayaran" as Pembayaran
+database "Data Menu dan Stok\n(menu_kantin)" as DataMenu
+database "Data Pesanan\n(pesanan_masuk)" as DataPesanan
+
+M -> UI: Pilih fitur buat pesanan
+UI -> Katalog: tampilkan_katalog()
+Katalog -> DataMenu: Baca menu, harga, dan stok
+DataMenu --> Katalog: Daftar menu
+Katalog --> UI: Daftar menu
+UI --> M: Tampilkan katalog
+
+loop Untuk setiap item yang dipilih
+    M -> UI: Masukkan nomor menu dan jumlah
+    UI -> Pemesanan: validasi_item(nomor, jumlah)
+    Pemesanan -> Katalog: ambil_data_menu(nomor)
+    Katalog -> DataMenu: Cari nomor menu
+    DataMenu --> Katalog: Data menu atau tidak ditemukan
+    Katalog --> Pemesanan: Hasil pencarian
+
+    alt Menu tidak ditemukan
+        Pemesanan --> UI: Menu tidak valid
+        UI --> M: Tampilkan pesan kesalahan
+    else Menu ditemukan
+        alt Jumlah tidak positif
+            Pemesanan --> UI: Jumlah harus lebih dari nol
+            UI --> M: Tampilkan pesan validasi
+        else Jumlah positif
+            Pemesanan -> Stok: cek_stok(nomor, jumlah_di_keranjang, jumlah_baru)
+            Stok -> DataMenu: Baca stok terkini
+            DataMenu --> Stok: Jumlah stok
+            Stok --> Pemesanan: Hasil validasi stok
+
+            alt Stok tidak mencukupi
+                Pemesanan --> UI: Stok tidak mencukupi
+                UI --> M: Tampilkan pesan kesalahan
+            else Stok mencukupi
+                Pemesanan -> Pemesanan: Tambahkan item ke keranjang
+                Pemesanan -> Pemesanan: Hitung subtotal item
+                Pemesanan --> UI: Item ditambahkan dan subtotal
+                UI --> M: Tampilkan subtotal
+            end
+        end
+    end
+end
+
+M -> UI: Selesaikan pemilihan menu
+UI -> Pemesanan: siapkan_checkout()
+Pemesanan -> Pemesanan: Hitung total semua item
+Pemesanan --> UI: Rincian keranjang dan total harga
+
+alt Keranjang kosong
+    UI --> M: Pesanan belum dapat dibuat
+else Keranjang berisi item
+    UI --> M: Tampilkan rincian dan total harga
+    M -> UI: Pilih metode penerimaan
+
+    alt Ambil sendiri di kantin
+        UI -> Pemesanan: Catat metode "Ambil di Kantin"
+        Pemesanan --> UI: Metode penerimaan tercatat
+    else Diantar ke kelas
+        UI --> M: Minta lokasi atau lantai kelas
+        M -> UI: Masukkan lokasi pengantaran
+        UI -> Pemesanan: Catat metode dan lokasi
+        Pemesanan --> UI: Metode dan lokasi tercatat
+    end
+
+    M -> UI: Pilih metode pembayaran
+    UI -> Pemesanan: proses_pembayaran(metode, total)
+
+    alt QRIS
+        Pemesanan -> Pembayaran: Simulasikan pembayaran QRIS
+        Pembayaran --> Pemesanan: Simulasi berhasil
+    else Tunai
+        Pemesanan -> Pembayaran: Catat pilihan pembayaran tunai
+        Pembayaran --> Pemesanan: Metode tunai tercatat
+    end
+
+    Pemesanan -> DataPesanan: Simpan rincian, total,\nmetode, dan status awal
+    DataPesanan --> Pemesanan: ID pesanan
+    Pemesanan -> Stok: kurangi_stok(item_pesanan)
+    Stok -> DataMenu: Simpan stok terbaru
+    DataMenu --> Stok: Stok berhasil diperbarui
+    Stok --> Pemesanan: Pembaruan stok selesai
+    Pemesanan --> UI: Pesanan berhasil dan ID pesanan
+    UI --> M: Tampilkan ID pesanan
+end
+
+@enduml
