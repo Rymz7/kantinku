@@ -13,22 +13,26 @@ KantinKu adalah aplikasi pemesanan makanan kantin kampus berbasis Command-Line I
 ## Deliverables
 
 ### D1 - Topik dan Pernyataan Masalah
+
 Dokumen berisi deskripsi aplikasi, permasalahan utama, aktor, cakupan, dan batasan sistem.
 
 [Dokumen D1](docs/profile/D1.%20Topik%20dan%20Pernyataan%20Masalah.md)
 
 ### D2 - Pembagian Modul
+
 Dokumen berisi pembagian modul, tanggung jawab setiap modul, fitur, dan ketergantungan antar modul.
 
 [Dokumen D2](docs/modules/D2-pembagian-modul.md)
 
 ### D3 - Use Case Diagram
+
 Diagram yang menggambarkan aktor dan interaksi mereka dengan sistem KantinKu.
 
 - [Source PlantUML D3](docs/diagram/D3-use-case-diagram.puml)
 - [Gambar Use Case Diagram](docs/diagram/img/D3%20Use%20Case.png)
 
 ### D4 - Sequence Diagrams
+
 Dokumentasi tiga skenario utama dan interaksi antar aktor serta modul sistem.
 
 - [Skenario dan Penjelasan D4](docs/diagram/D4-skenario-sequence-diagram.md)
@@ -40,29 +44,12 @@ Dokumentasi tiga skenario utama dan interaksi antar aktor serta modul sistem.
 - [D4.3 - Gambar Sequence Diagram](docs/diagram/img/D4.3%20-%20Mahasiswa%20Melacak%20dan%20Menerima%20Pesanan.png)
 
 ### D5 - Kolaborasi dan Activity Log
-Catatan kontribusi anggota kelompok, commit, dan Pull Request.
+
+Catatan kontribusi anggota kelompok serta tautan ke riwayat Pull Request.
 
 - [Activity Log](ACTIVITY_LOG.md)
 - [Pull Requests](https://github.com/Rymz7/kantinku/pulls)
 
-### D6 - Test Cases
-Berisi minimal 10 test cases untuk satu skenario, terdiri dari 5 common cases dan 5 edge cases, beserta alasan pemilihan edge cases.
-
-[Dokumen D6](docs/testing/D6-test-cases.md)
-
-### D7 - Unit Testing
-Berisi implementasi fungsi yang diuji, minimal 8 unit tests, dan bukti bahwa seluruh test berhasil dijalankan.
-
-- [Unit Tests](tests/test_calculate_order_total.py)
-- Hasil pengujian: screenshot akan ditambahkan setelah proses testing selesai.
-
-> Catatan: tautan D6 dan D7 menggunakan lokasi file yang direncanakan. Pastikan file dibuat pada lokasi tersebut atau ubah tautannya sesuai lokasi file sebenarnya.
-
-## Cara Menjalankan Tests
-
-Pastikan Python sudah terpasang. Jalankan perintah berikut dari root repository.
-
-1. Instal pytest:
-
-   ```bash
-   python -m pip install pytest
+<!-- TAMBAHKAN BAGIAN D6 - TEST CASES DI SINI SETELAH FILE D6 SUDAH ADA. -->
+<!-- TAMBAHKAN BAGIAN D7 - UNIT TESTING DI SINI SETELAH FILE TEST DAN SCREENSHOT SUDAH ADA. -->
+<!-- SETELAH D7 SIAP, TAMBAHKAN JUGA CARA MENJALANKAN TESTS, CONTOH: python -m pytest -v. --> 
