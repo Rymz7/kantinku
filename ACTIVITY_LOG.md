@@ -2,7 +2,7 @@
 |---|---|---|---|---|---|
 | 23 Oktober 2026 | Sharim Azhar Siraz | D1 | Menyusun pernyataan masalah, aktor, dan cakupan KantinPreorder | 20 Menit | [23a638b](https://github.com/Rymz7/kantinku/commit/23a638b) |
 | 28 Oktober 2026 | Ali Akbar Alhamid | D7 | Membuat function stock  | 32 Menit | [c5bdae8](https://github.com/Rymz7/kantinku/commit/c5bdae8) |
-| 28 oktober 2026 | Raditya Nur Ancha | D6 | Menulis tabel test case dan penjelasan pemilihan edge case | [..] | [hash atau PR #] |
+| 28 oktober 2026 | Raditya Nur Ancha | D6 | Menulis tabel test case dan penjelasan pemilihan edge case | [23] | [cc1ccba]https://github.com/Rymz7/kantinku/commit/cc1ccba |
 | 26 Oktober 2026 | Sharim Azhar Siraz | D2 | Meninjau PR anggota lain dan memberi komentar | 10 Menit | [PR #1](https://github.com/Rymz7/kantinku/pull/1) |
 | 26 Oktober 2026 | Sharim Azhar Siraz | D3 | Meninjau PR anggota lain dan memberi komentar | 10 Menit | [PR #2](https://github.com/Rymz7/kantinku/pull/2) |
 | 26 Oktober 2026 | Ali Akbar Alhamid | D5 | Membuat log aktivitas kolaborasi tim, catatan commit | 13 Menit | [d7b983e](https://github.com/Rymz7/kantinku/commit/d7b983e)
