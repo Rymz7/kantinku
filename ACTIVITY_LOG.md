@@ -6,4 +6,4 @@
 | 26 Oktober 2026 | Sharim Azhar Siraz | D2 | Meninjau PR anggota lain dan memberi komentar | 10 Menit | [PR #1](https://github.com/Rymz7/kantinku/pull/1) |
 | 26 Oktober 2026 | Sharim Azhar Siraz | D3 | Meninjau PR anggota lain dan memberi komentar | 10 Menit | [PR #2](https://github.com/Rymz7/kantinku/pull/2) |
 | 26 Oktober 2026 | Ali Akbar Alhamid | D5 | Membuat log aktivitas kolaborasi tim, catatan commit | 13 Menit | [d7b983e](https://github.com/Rymz7/kantinku/commit/d7b983e)
-| 26 Oktober 2026 | Sharim Azhar Siraz | D5 | Membuat catatan commit, dan riwayat Pull Request kelompok | 15 Menit | [d7b983e](https://github.com/Rymz7/kantinku/commit/d7b983e)
+| 28 Oktober 2026 | Sharim Azhar Siraz | D5 | Membuat catatan commit, dan riwayat Pull Request kelompok | 15 Menit | [d7b983e](https://github.com/Rymz7/kantinku/commit/d7b983e)
