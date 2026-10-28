@@ -56,7 +56,7 @@ Catatan kontribusi anggota kelompok serta tautan ke riwayat Pull Request.
 Implementasi dan pengujian 1 fungsi menggunakan kerangka kerja `pytest`. Pengujian berfokus pada logika validasi dan pemotongan ketersediaan stok menu pesanan kantin, mencakup skenario berhasil dan gagal.
 
 - [Source Code Fungsi (`src/stock.py`)](src/stock.py)
-- [Source Code Unit Test (`src/test_stok.py`)](src/test_stok.py)
+- [Source Code Unit Test (`src/test_stock.py`)](src/test_stock.py)
 - [Screenshot Hasil Pengujian (Passed)](src/IMG/hasil_test_stock.png)
 
 **Cara Menjalankan Test:**
