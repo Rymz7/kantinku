@@ -54,7 +54,7 @@ Catatan kontribusi anggota kelompok serta tautan ke riwayat Pull Request.
 
 Dokumen berisi minimal 10 test case untuk satu skenario utama KantinKu, yang terdiri dari minimal 5 common cases dan 5 edge cases. Setiap test case mencakup ID, judul, tipe, preconditions, input atau langkah pengujian, serta hasil yang diharapkan. Dokumen juga menjelaskan alasan pemilihan edge cases.
 
-- [Dokumen Test Cases D6](docs/testing/D6-test-cases.md)
+- [Dokumen Test Cases D6](https://github.com/Rymz7/kantinku/blob/main/test_case/D6.%20Test%20Case%20Design%20(1%20Scenario).md)
 
 ### D7 - Unit-Tested Code (1 Function)
 
