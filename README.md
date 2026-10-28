@@ -50,7 +50,12 @@ Catatan kontribusi anggota kelompok serta tautan ke riwayat Pull Request.
 - [Activity Log](ACTIVITY_LOG.md)
 - [Pull Requests](https://github.com/Rymz7/kantinku/pulls)
 
-<!-- TAMBAHKAN BAGIAN D6 - TEST CASES DI SINI SETELAH FILE D6 SUDAH ADA. -->
+### D6 - Test Case Design
+
+Dokumen berisi minimal 10 test case untuk satu skenario utama KantinKu, yang terdiri dari minimal 5 common cases dan 5 edge cases. Setiap test case mencakup ID, judul, tipe, preconditions, input atau langkah pengujian, serta hasil yang diharapkan. Dokumen juga menjelaskan alasan pemilihan edge cases.
+
+- [Dokumen Test Cases D6](docs/testing/D6-test-cases.md)
+
 ### D7 - Unit-Tested Code (1 Function)
 
 Implementasi dan pengujian 1 fungsi menggunakan kerangka kerja `pytest`. Pengujian berfokus pada logika validasi dan pemotongan ketersediaan stok menu pesanan kantin, mencakup skenario berhasil dan gagal.
@@ -60,7 +65,9 @@ Implementasi dan pengujian 1 fungsi menggunakan kerangka kerja `pytest`. Penguji
 - [Screenshot Hasil Pengujian (Passed)](src/IMG/hasil_test_stock.png)
 
 **Cara Menjalankan Test:**
+
 Pastikan module `pytest` sudah terinstal di lingkungan Python Anda. Buka terminal di direktori utama (root) proyek ini, lalu jalankan perintah berikut:
 
 ```bash
 pytest src/test_stock.py -v
+```
